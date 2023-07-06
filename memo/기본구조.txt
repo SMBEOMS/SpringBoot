@@ -1,0 +1,8 @@
+프로젝트 기본 경로
+	1) src/main/java			: 서버단 JAVA 파일
+	2) test/main/java			: 단위 테스트 JAVA 파일
+	3) src/main/resources		: 설정 파일 및 뷰단
+	4) src/main/resources/static		: css, js, image 등 정적 파일 경로
+	5) src/main/resources/templates 	: html 파일 경로
+	6) build.gradle			: 라이브러리 의존성 관리
+	7) application.yml			: 서버 및 DB, 라이브러리 설정 파일
