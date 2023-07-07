@@ -28,4 +28,3 @@ public class Coding {
 //        this.computer = computer;
 //    }
 }
-ㅇ
