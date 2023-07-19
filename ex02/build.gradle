@@ -8,6 +8,10 @@ group = 'com.example'
 version = '1.0'
 sourceCompatibility = '11'
 
+group = 'com.example'
+version = '1.0'
+sourceCompatibility = '11'
+
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
@@ -24,6 +28,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-web-services'
     implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
@@ -37,4 +43,3 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
-
