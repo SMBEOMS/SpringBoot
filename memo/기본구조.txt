@@ -6,3 +6,6 @@
 	5) src/main/resources/templates 	: html 파일 경로
 	6) build.gradle			: 라이브러리 의존성 관리
 	7) application.yml			: 서버 및 DB, 라이브러리 설정 파일
+
+
+Mapper > DAO < Service
