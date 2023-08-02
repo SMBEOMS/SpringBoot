@@ -11,4 +11,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class ServiceTests {
     @Autowired
     OrderService orderService;
+
+    @Test
+    public void orderTest(){
+        OrderVO orderVO = new OrderVO();
+        orderVO.setProductId(4L);
+        orderVO.setProductCount(5L);
+        orderService.order(orderVO);
+    }
 }

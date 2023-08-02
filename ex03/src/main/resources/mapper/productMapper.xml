@@ -9,4 +9,10 @@
     <select id="selectAll" resultType="productVO">
         SELECT PRODUCT_ID, PRODUCT_NAME, PRODUCT_STOCK, PRODUCT_PRICE, REGISTER_DATE, UPDATE_DATE FROM TBL_PRODUCT
     </select>
+
+    <update id="updateStock">
+        UPDATE TBL_PRODUCT
+        SET PRODUCT_STOCK = PRODUCT_STOCK - #{productCount}
+        WHERE PRODUCT_ID = #{productId}
+    </update>
 </mapper>
