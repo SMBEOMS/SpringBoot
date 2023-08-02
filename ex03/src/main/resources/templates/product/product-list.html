@@ -19,37 +19,37 @@
     </style>
 </head>
 <body>
-    <div>
-        <table border="1">
-            <tr>
-                <th>단일 선택</th>
-                <th>주문 개수</th>
-                <th>상품 번호</th>
-                <th>상품 이름</th>
-                <th>상품 재고</th>
-                <th>상품 가격</th>
-                <th>등록 날짜</th>
-                <th>수정 날짜</th>
+<div>
+    <table border="1">
+        <tr>
+            <th>단일 선택</th>
+            <th>주문 개수</th>
+            <th>상품 번호</th>
+            <th>상품 이름</th>
+            <th>상품 재고</th>
+            <th>상품 가격</th>
+            <th>등록 날짜</th>
+            <th>수정 날짜</th>
+        </tr>
+        <th:block th:each="product : ${products}">
+            <tr th:object="${product}">
+                <td><input type="radio" name="productId" th:value="*{productId}"></td>
+                <td><input type="text" class="productCount" readonly></td>
+                <td th:text="*{productId}"></td>
+                <td th:text="*{productName}"></td>
+                <td th:text="*{productStock}"></td>
+                <td th:text="*{productPrice}"></td>
+                <td th:text="*{registerDate}"></td>
+                <td th:text="*{updateDate}"></td>
             </tr>
-            <th:block th:each="product : ${products}">
-                <tr th:object="${product}">
-                    <td><input type="radio" name="productId" th:value="*{productId}"></td>
-                    <td><input type="text" class="productCount" readonly></td>
-                    <td th:text="*{productId}"></td>
-                    <td th:text="*{productName}"></td>
-                    <td th:text="*{productStock}"></td>
-                    <td th:text="*{productPrice}"></td>
-                    <td th:text="*{registerDate}"></td>
-                    <td th:text="*{updateDate}"></td>
-                </tr>
-            </th:block>
-        </table>
-        <button type="button" id="order-done">주문 완료</button><button type="button" onclick="location.href='/order/list';">주문 내역</button>
-    </div>
-    <form th:action="@{/order/done}" method="post" name="order-form">
-        <input type="hidden" name="productId">
-        <input type="hidden" name="productCount">
-    </form>
+        </th:block>
+    </table>
+    <button type="button" id="order-done">주문 완료</button><button type="button" onclick="location.href='/order/list';">주문 내역</button>
+</div>
+<form th:action="@{/order/done}" method="post" name="order-form">
+    <input type="hidden" name="productId">
+    <input type="hidden" name="productCount">
+</form>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
@@ -60,13 +60,13 @@
     let $temp, i;
 
     $radios.on("click", function(){
-       i = $radios.index(this);
-       if($temp) {
-           $temp.prop("readOnly", true);
-           $temp.val("");
-       }
-       $inputs.eq(i).prop("readOnly", false);
-       $temp = $inputs.eq(i);
+        i = $radios.index(this);
+        if($temp) {
+            $temp.prop("readOnly", true);
+            $temp.val("");
+        }
+        $inputs.eq(i).prop("readOnly", false);
+        $temp = $inputs.eq(i);
     });
 
     $done.on("click", function(){

@@ -22,6 +22,10 @@ public class ProductDAO {
     public List<ProductVO> findAll(){
         return productMapper.selectAll();
     }
+    //    상품 재고 수정
+    public void setProductStock(OrderVO orderVO){
+        productMapper.updateStock(orderVO);
+    }
 
 }
 
