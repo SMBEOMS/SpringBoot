@@ -27,4 +27,13 @@ public class OrderController {
         orderService.order(orderVO);
         return new RedirectView("/product/list");
     }
+
+    @GetMapping("list")
+    /*@RequestParam(required = false) : 해당 파라미터 null값 허용*/
+    public String list(@RequestParam(required = false) String sort, Model model) {
+        if(sort == null) {sort = "recent";}
+        model.addAttribute("sort", sort);
+        model.addAttribute("orders", orderService.getList(sort));
+        return "/order/order-list";
+    }
 }

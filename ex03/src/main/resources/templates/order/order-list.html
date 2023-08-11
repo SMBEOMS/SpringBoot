@@ -27,31 +27,31 @@
     </style>
 </head>
 <body>
-    <div id="container">
-        <div class="sort">
-            <span class="on" id="recent" data-sort="recent">최신순</span>
-            <span class="" id="money" data-sort="money">결제 금액순</span>
-        </div>
-        <table border="1">
-            <tr>
-                <th>상품 이름</th>
-                <th>상품 가격</th>
-                <th>주문 개수</th>
-                <th>결제 금액</th>
-                <th>주문 날짜</th>
-            </tr>
-            <th:block th:each="order : ${orders}">
-                <tr th:object="${order}">
-                    <td th:text="*{productName}"></td>
-                    <td th:text="*{productPrice}"></td>
-                    <td th:text="*{productCount}"></td>
-                    <td th:text="*{orderPrice}"></td>
-                    <td th:text="*{orderDate}"></td>
-                </tr>
-            </th:block>
-        </table>
-        <button type="button" onclick="location.href='/product/list';">상품 목록</button>
+<div id="container">
+    <div class="sort">
+        <span class="on" id="recent" data-sort="recent">최신순</span>
+        <span class="" id="money" data-sort="money">결제 금액순</span>
     </div>
+    <table border="1">
+        <tr>
+            <th>상품 이름</th>
+            <th>상품 가격</th>
+            <th>주문 개수</th>
+            <th>결제 금액</th>
+            <th>주문 날짜</th>
+        </tr>
+        <th:block th:each="order : ${orders}">
+            <tr th:object="${order}">
+                <td th:text="*{productName}"></td>
+                <td th:text="*{productPrice}"></td>
+                <td th:text="*{productCount}"></td>
+                <td th:text="*{orderPrice}"></td>
+                <td th:text="*{orderDate}"></td>
+            </tr>
+        </th:block>
+    </table>
+    <button type="button" onclick="location.href='/product/list';">상품 목록</button>
+</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script th:inline="javascript">
@@ -64,5 +64,5 @@
     $spans.on("click", function(){
         location.href = `/order/list?sort=${$(this).data("sort")}`;
     });
-</script>
+</script>   
 </html>

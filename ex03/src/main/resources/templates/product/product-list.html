@@ -47,7 +47,7 @@
     <button type="button" id="order-done">주문 완료</button><button type="button" onclick="location.href='/order/list';">주문 내역</button>
 </div>
 <form th:action="@{/order/done}" method="post" name="order-form">
-    <input type="hidden" name="productId">
+
     <input type="hidden" name="productCount">
 </form>
 </body>

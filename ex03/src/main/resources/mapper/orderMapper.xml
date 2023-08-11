@@ -5,4 +5,19 @@
         INSERT INTO TBL_ORDER (ORDER_ID, PRODUCT_ID, PRODUCT_COUNT)
         VALUES(SEQ_ORDER.NEXTVAL, #{productId}, #{productCount})
     </insert>
+
+    <select id="selectAll" resultType="orderDTO">
+        SELECT P.PRODUCT_ID, PRODUCT_NAME, PRODUCT_STOCK, PRODUCT_PRICE, REGISTER_DATE, UPDATE_DATE, ORDER_ID, PRODUCT_COUNT, ORDER_DATE, PRODUCT_PRICE * PRODUCT_COUNT ORDER_PRICE
+        FROM TBL_PRODUCT P JOIN TBL_ORDER O ON P.PRODUCT_ID = O.PRODUCT_ID
+        ORDER BY
+        <choose>
+            <when test="sort == 'recent'.toString()">
+                ORDER_ID
+            </when>
+            <otherwise>
+                ORDER_PRICE
+            </otherwise>
+        </choose>
+        DESC
+    </select>
 </mapper>
