@@ -112,14 +112,64 @@
   const $registerReady = $("button.register-ready");
   const $registerDone = $("input.register-done");
   const $orderList = $("button#order-list");
-  let $temp, i;
+  let $temp, i, sort;
+  const $spans = $("div.sort span");
 
-    $orderList.on("click", function (){
-    $("span").attr("class", "");
-    $("span#" + $(this).data("sort")).attr("class", "on");
+  $done.on("click", function(){
     $.ajax({
-      url: "/order/list/" + $(this).data("sort"),
+      url: "",
+      type: "post",
+      data: JSON.stringify({}),
+      contentType: "application/json; charset=utf-8",
+      success: function(){
+        $orderList.click();
+      }
+    });
+  });
+
+
+  $spans.on("click", function(){
+    $spans.attr("class", "");
+    $(this).attr("class", "on");
+    $orderList.click();
+  });
+
+  $orderList.on("click", function(){
+    $("#container").show();
+    $spans.each((i, span) => {
+      if($(span).attr("class")){
+        sort = $(span).data("sort");
+      }
+
+    });
+    $("span").attr("class", "");
+    $("span#" + sort).attr("class", "on");
+    $.ajax({
+      url: "/order/list/" + sort,
       success: function (orders){
+        let text = `
+                    <table border="1">
+                        <tr>
+                            <th>상품 이름</th>
+                            <th>상품 가격</th>
+                            <th>주문 개수</th>
+                            <th>결제 금액</th>
+                            <th>주문 날짜</th>
+                        </tr>
+                `;
+        orders.forEach(order => {
+          text += `
+                    <tr>
+                        <td>${order.productName}</td>
+                        <td>${order.productPrice}</td>
+                        <td>${order.productCount}</td>
+                        <td>${order.orderPrice}</td>
+                        <td>${order.orderDate}</td>
+                    </tr>
+            `;
+        });
+        text += `</table>`;
+        $("div.order-list").html(text);
 
         console.log(orders);
       }
