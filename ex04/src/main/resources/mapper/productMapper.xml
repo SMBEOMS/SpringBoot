@@ -15,4 +15,9 @@
         SET PRODUCT_STOCK = PRODUCT_STOCK - #{productCount}
         WHERE PRODUCT_ID = #{productId}
     </update>
+
+    <select id="select" resultType="productVO">
+        SELECT PRODUCT_ID, PRODUCT_NAME, PRODUCT_STOCK, PRODUCT_PRICE, REGISTER_DATE, UPDATE_DATE FROM TBL_PRODUCT
+        WHERE PRODUCT_ID = #{productId}
+    </select>
 </mapper>

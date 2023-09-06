@@ -16,4 +16,7 @@ public interface ProductMapper {
 
     //    상품 재고 수정
     public void updateStock(OrderVO orderVO);
+
+    //     상품 조회
+    public ProductVO select(Long productID);
 }

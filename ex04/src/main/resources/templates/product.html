@@ -106,7 +106,8 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
   const $radios = $("input[type='radio']");
-  const $inputs = $("input[class='productCount']");
+  const $inputs = $("input.productCount");
+  const $ids = $("input[name='productID']");
   const $done = $("#order-done");
   const $form = $("form[name='order-form']");
   const $registerReady = $("button.register-ready");
@@ -117,9 +118,9 @@
 
   $done.on("click", function(){
     $.ajax({
-      url: "",
+      url: "/order/write",
       type: "post",
-      data: JSON.stringify({}),
+      data: JSON.stringify({productID: $ids.eq(i).val(), productCount: $inputs.eq(i).val()}),
       contentType: "application/json; charset=utf-8",
       success: function(){
         $orderList.click();
@@ -206,11 +207,8 @@
 
   $done.on("click", function(){
     if(i) {
-      console.log(i);
       $form.find("input[name='productId']").val($radios.eq(i).val());
       $form.find("input[name='productCount']").val($inputs.eq(i).val());
-      console.log($form.find("input[name='productId']").val());
-      console.log($form.find("input[name='productCount']").val());
       $form.submit();
     }
   });

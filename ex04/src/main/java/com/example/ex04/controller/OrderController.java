@@ -19,7 +19,7 @@ public class OrderController {
         return orderService.getList(sort);
     }
 
-    @PostMapping("new")
+    @PostMapping("write")
     public void register(@RequestBody OrderVO orderVO){
         orderService.order(orderVO);
     }

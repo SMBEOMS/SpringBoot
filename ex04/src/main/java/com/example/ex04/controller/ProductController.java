@@ -2,6 +2,7 @@ package com.example.ex04.controller;
 
 import com.example.ex04.domain.ProductVO;
 import com.example.ex04.service.ProductService;
+import com.example.ex04.service.ProductServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,5 +24,10 @@ public class ProductController {
     @ResponseBody
     public void register(@RequestBody ProductVO productVO){
         productService.register(productVO);
+    }
+
+    @GetMapping("{productID}")
+    public ProductVO getProduct(@PathVariable("productID") Long productID){
+        return productService.getProduct(productID);
     }
 }
