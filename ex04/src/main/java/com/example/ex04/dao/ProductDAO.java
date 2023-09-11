@@ -13,9 +13,6 @@ import java.util.List;
 public class ProductDAO {
     private final ProductMapper productMapper;
 
-    public static ProductVO findById(Long productID) {
-    }
-
     //    상품 추가
     public void save(ProductVO productVO){
         productMapper.insert(productVO);

@@ -27,6 +27,7 @@ public class ProductController {
     }
 
     @GetMapping("{productID}")
+    @ResponseBody
     public ProductVO getProduct(@PathVariable("productID") Long productID){
         return productService.getProduct(productID);
     }

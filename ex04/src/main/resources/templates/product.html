@@ -123,6 +123,14 @@
       data: JSON.stringify({productID: $ids.eq(i).val(), productCount: $inputs.eq(i).val()}),
       contentType: "application/json; charset=utf-8",
       success: function(){
+
+        $.ajax({
+          url:"/product/" +  $ids.eq(i).val(),
+          success: function (products){
+            $($("tr").eq(i + 1).children()).eq(4).text(products.productStock);
+          }
+        });
+
         $orderList.click();
       }
     });
